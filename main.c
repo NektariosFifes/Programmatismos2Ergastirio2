@@ -83,7 +83,7 @@ void delete_student(){
 void print_students(){
     for(int i=0; i<100 ; i++){
         if(info[i].AM != -1) {
-            printf("AM:%dONOMATEPONIMO:%sBathmos:%d ", info[i].AM, info[i].onoma, info[i].bathmos);
+            printf("%d\t%s\t%d\n", info[i].AM, info[i].onoma, info[i].bathmos);
         }
     }
 }
