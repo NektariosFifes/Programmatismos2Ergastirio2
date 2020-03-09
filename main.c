@@ -8,10 +8,10 @@
 //!!!!!!!!!GLOBAL DATA
 
 
- struct DataMathitis {
+struct DataMathitis {
     int AM;
     char onoma[MAXSTUDENTS];
-     int bathmos;
+    int bathmos;
 };
 //DEN TO BAZO MAIN GT THE EINAI STO SCOPE TOU MAIN
 typedef struct DataMathitis InfoMathiti ;
@@ -35,10 +35,12 @@ int find_student(int Am) {
         if (info[k].AM == Am) {
             brethikeTOam = true;
             ThesiKapouNatoBaloANexiXORO = k;
-        } else {
-            ThesiKapouNatoBaloANexiXORO = indexx++;
         }
     }
+    if(brethikeTOam!=true){
+            ThesiKapouNatoBaloANexiXORO = indexx++;
+    }
+
 }
 void add_new_student(){
     int Am;
@@ -52,7 +54,7 @@ void add_new_student(){
     scanf("%d",&bathmos);
 
     int brethikeTOam = false;
-     ThesiKapouNatoBaloANexiXORO = 0;
+    ThesiKapouNatoBaloANexiXORO = 0;
     find_student(Am);
 
     info[ThesiKapouNatoBaloANexiXORO].AM = Am;
@@ -60,7 +62,7 @@ void add_new_student(){
     for(int o=0; o< sizeof(onomateponimo);o++){
         info[ThesiKapouNatoBaloANexiXORO].onoma[o] = onomateponimo[o];
     }
-   //allios strcpy(info[ThesiKapouNatoBaloANexiXORO].onoma, onomateponimo);
+    //allios strcpy(info[ThesiKapouNatoBaloANexiXORO].onoma, onomateponimo);
 
 }
 
@@ -79,50 +81,49 @@ void delete_student(){
     }
 }
 void print_students(){
- for(int i=0; i<100 ; i++){
-     if(info[i].AM != -1) {
-         printf("AM:%dONOMATEPONIMO:%sBathmos:%d ", info[i].AM, info[i].onoma, info[i].bathmos);
-     }
- }
+    for(int i=0; i<100 ; i++){
+        if(info[i].AM != -1) {
+            printf("AM:%dONOMATEPONIMO:%sBathmos:%d ", info[i].AM, info[i].onoma, info[i].bathmos);
+        }
+    }
 }
 
 
 int main() {
 
 
-        //ARXIKOPOIISI
-        for(int i=0; i<MAXSTUDENTS;i++){
-            info[i].AM = -1;
-        }
-
-
-        int run = 1;
-        char choice;
-        // INITIALIZE GLOBAL ARRAY HERE !!!
-        while (run) {
-            print_menu();
-            do {
-                scanf("%c", &choice);
-            } while (choice < '1' || choice > '4');
-            switch (choice) {
-                case '1':
-                    add_new_student();
-                    break;
-                case '2':
-                    delete_student();
-                    break;
-                case '3':
-                    print_students();
-                   //printf("3");
-                    break;
-                case '4':
-                    run = 0;
-                    break;
-            }
-
-        }
-
-
-        return 0;
+    //ARXIKOPOIISI
+    for(int i=0; i<MAXSTUDENTS;i++){
+        info[i].AM = -1;
     }
 
+
+    int run = 1;
+    char choice;
+    // INITIALIZE GLOBAL ARRAY HERE !!!
+    while (run) {
+        print_menu();
+        do {
+            scanf("%c", &choice);
+        } while (choice < '1' || choice > '4');
+        switch (choice) {
+            case '1':
+                add_new_student();
+                break;
+            case '2':
+                delete_student();
+                break;
+            case '3':
+                print_students();
+                //printf("3");
+                break;
+            case '4':
+                run = 0;
+                break;
+        }
+
+    }
+
+
+    return 0;
+}
